@@ -1,7 +1,24 @@
-class WildernessMap implements Map {
+class WildernessMap extends Map {
 
-    WildernessMap() {
-        // TODO: Populate tiles with random wilderness tiles.
+    WildernessMap(int size) {
+        tiles = new Tile[size][size];
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                // Random tile type (Swamp, Forest, Water).
+                int i = (int)(Math.random() * 3);
+                switch (i) {
+                case 0: // SWAMP
+                    tiles[row][col] = createTile(Tile.Type.SWAMP);
+                    break;
+                case 1: // FOREST
+                    tiles[row][col] = createTile(Tile.Type.FOREST);
+                    break;
+                case 2: // WATER
+                    tiles[row][col] = createTile(Tile.Type.WATER);
+                    break;
+                }
+            }
+        }
     }
 
     public Tile createTile(Tile.Type type) {
@@ -13,7 +30,6 @@ class WildernessMap implements Map {
         case WATER:
             return new WaterTile();
         }
-
         throw new RuntimeException("Unknown tile type");
     }
 
