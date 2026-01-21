@@ -1,5 +1,3 @@
-import java.time.zone.ZoneOffsetTransitionRule.TimeDefinition;
-
 class CityMap extends Map {
 
     CityMap(int size) {
