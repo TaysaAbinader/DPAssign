@@ -1,19 +1,28 @@
 package Composite;
 
-import java.util.HashMap;
+public class Employee implements OrganizationEntity {
+    private String name;
+    private Double salary;
 
-public class Employee extends Department{
-    protected String name;
-    protected Integer salary;
-    HashMap<String, Integer> employeeData = new HashMap<>();
-
-    public Employee (String departmentName, String name, Integer salary) {
-        super(departmentName);
+    public Employee (String name, Double salary) {
         this.name = name;
         this.salary = salary;
     }
 
-    public void addEmployee(Employee employee) {
-        employeeData.put(employee.name, employee.salary);
+    public String getName() {
+        return this.name;
+    }
+
+    public Double getSalary() {
+        return this.salary;
+    }
+
+    public void printXML(Integer level) {
+        String indent = "  ".repeat(level);
+        System.out.println(indent + "<Employee>");
+        System.out.println(indent + "  <Name>" + name + "</Name>");
+        System.out.println(indent + "  <Salary>" + salary + "</Salary>");
+        System.out.println(indent + "</Employee>");
     }
 }
+
